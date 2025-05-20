@@ -86,8 +86,9 @@ gallery.addEventListener("click", onImgClick);
 function onImgClick(event) {
   event.preventDefault(); 
 
-  if (event.target === event.currentTarget) return;
-
+ if (event.target.nodeName !== "IMG") 
+    return;
+  
   const instance = basicLightbox.create(`
     <img src="${event.target.getAttribute("data-source")}" width="800" height="600">
   `, {
